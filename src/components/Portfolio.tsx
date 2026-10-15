@@ -83,6 +83,7 @@ export default function Portfolio() {
     stage.addEventListener('pointerdown', down);
     addEventListener('pointermove', move);
     addEventListener('pointerup', up);
+    addEventListener('pointercancel', up);
 
     let visible = false;
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
@@ -135,6 +136,7 @@ export default function Portfolio() {
       stage.removeEventListener('pointerdown', down);
       removeEventListener('pointermove', move);
       removeEventListener('pointerup', up);
+      removeEventListener('pointercancel', up);
     };
   }, []);
 

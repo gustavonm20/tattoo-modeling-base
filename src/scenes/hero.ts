@@ -26,7 +26,9 @@ export interface HeroOptions {
 }
 
 const CAM_Z = 5.2;
-const HALF_H = Math.tan((20 * Math.PI) / 180) * CAM_Z;
+/** No celular a câmera fica mais longe para a forma não cobrir o título. */
+const CAM_Z_MOBILE = 7.6;
+const TAN_HALF_FOV = Math.tan((20 * Math.PI) / 180);
 
 /** Cena do hero: forma de tinta, anéis, gaiola, poeira e pós-processamento. */
 export class HeroScene {
@@ -34,6 +36,7 @@ export class HeroScene {
   private scene = new THREE.Scene();
   private camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
   private pr: number;
+  private camZ = CAM_Z;
   private u = {
     t: { value: 0 },
     m: { value: new THREE.Vector2() },
@@ -195,7 +198,8 @@ export class HeroScene {
     const x = w > 760 ? 1.4 : 0;
     [this.blob, this.cage, this.pts].forEach((o) => (o.position.x = x));
     this.rings.forEach((r) => (r.g.position.x = x));
-    this.blob.position.y = w > 760 ? 0.25 : 0.5;
+    this.blob.position.y = w > 760 ? 0.25 : 1.35;
+    this.camZ = w > 760 ? CAM_Z : CAM_Z_MOBILE;
   }
 
   /** Clique: onda de tinta no pós-processamento + pulso na forma. x, y em 0..1 (origem no topo). */
@@ -212,7 +216,8 @@ export class HeroScene {
     u.m.value.set(i.tx, -i.ty);
     u.s.value += ((i.hover ? 1 : 0) - u.s.value) * 0.04;
     u.p.value *= 0.96;
-    u.mw.value.set(i.tx * HALF_H * cam.aspect, -i.ty * HALF_H, 0);
+    const halfH = TAN_HALF_FOV * this.camZ;
+    u.mw.value.set(i.tx * halfH * cam.aspect, -i.ty * halfH, 0);
     // A forma vira pó na segunda metade do caminho até sair da tela
     u.dis.value = THREE.MathUtils.smoothstep(so, 0.3, 0.95);
     this.dust.visible = u.dis.value > 0.001;
@@ -234,7 +239,7 @@ export class HeroScene {
     });
 
     // Câmera recua e orbita conforme o scroll
-    const orbit = so * 0.75, radius = CAM_Z + so * 3.2;
+    const orbit = so * 0.75, radius = this.camZ + so * 3.2;
     const tx = i.tx * 0.5 + Math.sin(orbit) * radius, ty = -i.ty * 0.35 + so * 1.1;
     cam.position.x += (tx - cam.position.x) * 0.05;
     cam.position.y += (ty - cam.position.y) * 0.05;

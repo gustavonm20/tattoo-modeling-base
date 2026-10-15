@@ -85,6 +85,13 @@
   min-height: 14px;
 }
 
+/* o campo de arquivo não usa rótulo flutuante: fica no fluxo normal */
+.f > label.up {
+  position: static;
+  top: auto;
+  pointer-events: auto;
+}
+
 .up {
   border: 1px dashed #2e2e2e;
   padding: 18px;
