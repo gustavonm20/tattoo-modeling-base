@@ -1,0 +1,400 @@
+## Código HTML completo
+
+html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vulto Ink | Tatuagem autoral em São Paulo</title>
+<meta name="description" content="Rafael Moraes, tatuador autônomo em São Paulo. Blackwork, fine line e realismo em preto e cinza. Estúdio privado, sob agendamento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+html,body{margin:0;background:#0a0a0a;scroll-behavior:smooth}
+.vk{--bg:#0a0a0a;--g:#8a8a86;--l:#e9e6df;--a:#b3121f;position:relative;overflow:hidden;background:var(--bg);color:var(--l);font-family:Inter,sans-serif;font-weight:300;cursor:none;min-height:100vh}
+.vk *{box-sizing:border-box}.vk a,.vk button,.vk input,.vk select,.vk textarea,.vk summary,.vk label{cursor:none}
+.vk h2,.vk h3{color:var(--l);font-family:'Cormorant Garamond',serif;font-weight:400;margin:0}
+.vk .sec{padding:110px 7vw;position:relative;border-top:1px solid #1f1f1f}
+.vk .lbl{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--a);margin-bottom:14px;display:block;font-family:ui-monospace,monospace}
+.vk .big{font-size:clamp(40px,5vw,72px);line-height:1.05}.vk .big i{color:var(--a)}
+.vk p{color:var(--g);font-size:15px;line-height:1.75}
+.vk .rv{opacity:0;transform:perspective(600px) rotateX(-35deg) translateY(40px);transform-origin:50% 0;transition:all 1.2s cubic-bezier(.16,1,.3,1)}.vk .rv.on{opacity:1;transform:none}
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:50;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:gr 1s steps(6) infinite}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-5%,3%)}50%{transform:translate(4%,-6%)}75%{transform:translate(-7%,2%)}}
+.cur{position:fixed;left:0;top:0;width:34px;height:34px;border:1px solid #e9e6df;border-radius:50%;pointer-events:none;z-index:62;transform:translate(-50%,-50%);transition:width .35s,height .35s,background .35s;mix-blend-mode:difference;display:flex;align-items:center;justify-content:center;font:400 9px Inter;letter-spacing:.15em;color:#000}
+.cur.big2{width:84px;height:84px;background:#e9e6df}
+.tr{position:fixed;left:0;top:0;border-radius:50%;background:#b3121f;pointer-events:none;z-index:61;transform:translate(-50%,-50%)}
+.vk nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:28px 7vw;font-size:11px;letter-spacing:.25em;text-transform:uppercase}
+.vk nav b{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.05em;text-transform:none;font-weight:500}.vk nav b em{color:var(--a)}
+.vk nav a{color:var(--g);margin-left:28px;text-decoration:none;transition:color .3s}.vk nav a:hover{color:var(--l)}
+.vk .hero{height:100vh;min-height:620px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 7vw 7vh}
+.vk #gl{position:absolute;inset:0;width:100%;height:100%}
+.vk .hw{perspective:700px;position:relative;z-index:5;pointer-events:none}
+.vk .ht{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,11vw,170px);line-height:.86;margin:0;font-weight:400;letter-spacing:-.02em;transform-style:preserve-3d;color:var(--l);text-shadow:1px 1px 0 #6d0b13,2px 2px 0 #5a0910,3px 3px 0 #47070d,4px 4px 0 #34050a,5px 5px 0 #220307,6px 6px 14px rgba(0,0,0,.8)}
+.vk .ht .ch{display:inline-block;opacity:0;transform:rotateX(-100deg) translateZ(60px);transform-origin:50% 100%;animation:ci 1.4s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes ci{to{opacity:1;transform:none}}
+.vk .ht i{color:var(--a);font-style:italic}
+.vk .hs{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px;gap:20px}
+.vk .hs p{max-width:320px;margin:0}
+.vk .hint{position:absolute;top:100px;right:7vw;z-index:5;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--g);font-family:ui-monospace,monospace}
+.vk .mb{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border:1px solid var(--l);border-radius:40px;background:transparent;color:var(--l);font:400 11px Inter;letter-spacing:.25em;text-transform:uppercase;position:relative;overflow:hidden;transition:color .5s,border-color .5s;text-decoration:none;isolation:isolate}
+.vk .mb::before{content:'';position:absolute;inset:0;background:var(--a);clip-path:circle(0% at var(--x,50%) var(--y,100%));transition:clip-path .7s cubic-bezier(.16,1,.3,1);z-index:-1}
+.vk .mb:hover::before{clip-path:circle(150% at var(--x,50%) var(--y,100%))}.vk .mb:hover{border-color:var(--a)}
+.vk .mq{overflow:hidden;white-space:nowrap;padding:24px 0;border-top:1px solid #1f1f1f;perspective:400px}
+.vk .mq div{display:inline-block;font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6vw,90px);font-style:italic;will-change:transform}
+.vk .mq em{color:transparent;-webkit-text-stroke:1px var(--a);font-style:normal;margin:0 28px}
+.vk .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6vw;align-items:center}
+.vk #g2{width:100%;aspect-ratio:1;display:block}
+.vk .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.vk .stats div{border-left:1px solid var(--a);padding-left:12px}.vk .stats b{display:block;font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;color:var(--l)}.vk .stats small{font-size:10px;color:var(--g);letter-spacing:.1em;text-transform:uppercase}
+.vk .sty{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.vk .fl{height:320px;perspective:900px}
+.vk .fi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.7,-.3,.2,1.3)}
+.vk .fl:hover .fi{transform:rotateY(180deg)}
+.vk .fa,.vk .fb2{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid #222;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;background:#0e0e0e}
+.vk .fb2{transform:rotateY(180deg);background:var(--a);border-color:var(--a)}.vk .fb2 p{color:#f3d6d8;margin:0;font-size:14px}.vk .fb2 b{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400}
+.vk .fa svg{width:70px;height:70px}.vk .fa h3{font-size:34px}.vk .fa small,.vk .fb2 small{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-family:ui-monospace,monospace}.vk .fb2 small{color:#f3d6d8}
+.vk .flt{display:flex;gap:8px;margin:26px 0 0;flex-wrap:wrap}
+.vk .flt button{background:transparent;border:1px solid #2a2a2a;color:var(--g);padding:9px 18px;border-radius:30px;font:400 11px Inter;letter-spacing:.15em;text-transform:uppercase;transition:all .3s}
+.vk .flt button.act,.vk .flt button:hover{border-color:var(--a);color:var(--l)}
+.vk .stage{height:560px;perspective:1300px;position:relative;touch-action:pan-y;user-select:none}
+.vk .ring{position:absolute;left:50%;top:44%;width:0;height:0;transform-style:preserve-3d}
+.vk .card{position:absolute;width:190px;height:254px;left:-95px;top:-127px;background:#111;border:1px solid #262626;overflow:hidden;transition:opacity .5s}
+.vk .card.hide{opacity:.12}
+.vk .card svg{width:100%;height:100%;display:block;pointer-events:none}
+.vk .card .cap{position:absolute;left:12px;bottom:10px;right:12px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--l)}
+.vk .flr{position:absolute;left:50%;top:84%;width:700px;height:110px;margin-left:-350px;border-radius:50%;background:radial-gradient(ellipse,rgba(179,18,31,.28),transparent 70%);transform:rotateX(70deg)}
+.vk .sh{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--g);font-family:ui-monospace,monospace}
+.vk .lb{position:absolute;inset:0;z-index:20;background:rgba(8,8,8,.97);display:flex;align-items:center;justify-content:center;gap:40px;padding:30px;clip-path:circle(0% at 50% 50%);transition:clip-path .9s cubic-bezier(.76,0,.24,1);pointer-events:none;perspective:900px}
+.vk .lb.on{pointer-events:auto}
+.vk .lb .art{width:300px;height:400px;border:1px solid #2a2a2a;transition:transform .2s}.vk .lb .art svg{width:100%;height:100%}
+.vk .lb h3{font-size:42px}.vk .lb .x{position:absolute;top:24px;right:7vw;background:none;border:none;color:var(--l);font-size:24px}
+.vk .deck{position:relative;height:300px;perspective:900px;margin-top:10px}
+.vk .dc{position:absolute;left:0;right:0;top:50px;height:210px;background:#101010;border:1px solid #262626;padding:30px;transition:transform 1s cubic-bezier(.16,1,.3,1),opacity 1s,background .6s;transform-origin:50% 100%}
+.vk .dc.f{background:#131313;border-color:#3a1a1d}
+.vk .dc h3{font-size:36px}.vk .dc h3 small{font-family:ui-monospace,monospace;font-size:11px;color:var(--a);letter-spacing:.2em;margin-right:12px}.vk .dc p{margin:10px 0 0;font-size:14px}
+.vk .dn{display:flex;gap:12px;margin-top:24px;align-items:center}.vk .dn span{font-size:11px;color:var(--g);letter-spacing:.2em;font-family:ui-monospace,monospace}
+.vk .dep{min-height:170px;position:relative;margin-top:24px;perspective:800px;max-width:900px}
+.vk .q{position:absolute;inset:0;opacity:0;transform:rotateX(60deg) translateY(30px);transform-origin:50% 100%;transition:all 1s cubic-bezier(.16,1,.3,1)}.vk .q.on{opacity:1;transform:none}
+.vk .q blockquote{margin:0;font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,40px);font-style:italic;line-height:1.3;color:var(--l)}.vk .q cite{display:block;margin-top:16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-style:normal}
+.vk form{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;margin-top:36px;max-width:900px}
+.vk .f{position:relative}.vk .f.w{grid-column:1/-1}
+.vk .f input,.vk .f select,.vk .f textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #2e2e2e;color:var(--l);font:300 15px Inter;padding:22px 0 8px;outline:none;border-radius:0;transition:border-color .4s}
+.vk .f select option{background:#111}.vk .f textarea{resize:none;height:84px}
+.vk .f>label{position:absolute;left:0;top:22px;font-size:14px;color:var(--g);transition:all .35s;pointer-events:none}
+.vk .f input:focus,.vk .f textarea:focus,.vk .f select:focus{border-color:var(--a)}
+.vk .f input:focus+label,.vk .f input:not(:placeholder-shown)+label,.vk .f textarea:focus+label,.vk .f textarea:not(:placeholder-shown)+label,.vk .f.fx>label{top:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--a)}
+.vk .err{font-size:11px;color:#e2574c;margin-top:5px;min-height:14px}
+.vk .up{border:1px dashed #2e2e2e;padding:18px;text-align:center;font-size:13px;color:var(--g);display:block}.vk .up:hover{border-color:var(--a)}
+.vk .ok{grid-column:1/-1;font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic}
+.vk details{border-bottom:1px solid #1f1f1f;padding:22px 0;max-width:900px}.vk summary{list-style:none;display:flex;justify-content:space-between;font-family:'Cormorant Garamond',serif;font-size:26px}.vk summary::-webkit-details-marker{display:none}
+.vk summary::after{content:'+';color:var(--a);transition:transform .4s}.vk details[open] summary::after{transform:rotate(45deg)}
+.vk details p{margin:12px 0 0;animation:fi .7s cubic-bezier(.16,1,.3,1);transform-origin:50% 0}@keyframes fi{from{opacity:0;transform:perspective(500px) rotateX(-50deg)}}
+.vk footer{padding:80px 7vw 36px;border-top:1px solid #1f1f1f}
+.vk .fbg{font-family:'Cormorant Garamond',serif;font-size:clamp(70px,15vw,240px);line-height:.9;letter-spacing:-.02em;perspective:500px;white-space:nowrap}.vk .fbg span{display:inline-block;transition:color .3s}
+.vk .fr{display:flex;justify-content:space-between;margin-top:30px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--g)}.vk .fr a{color:var(--l);text-decoration:none;margin-left:18px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:760px){.vk,.vk *{cursor:auto!important}.cur,.tr{display:none}.vk .two,.vk form,.vk .sty{grid-template-columns:1fr}.vk .sec{padding:72px 22px}.vk nav a{display:none}.vk .stage{height:440px}.vk .card{width:150px;height:200px;left:-75px;top:-100px}.vk .lb{flex-direction:column;gap:16px}.vk .lb .art{width:200px;height:266px}}
+@media (prefers-reduced-motion:reduce){.vk *,.grain{animation:none!important;transition:none!important}.vk .rv,.vk .ht .ch{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="cur" id="cur"></div>
+<div class="vk" id="vk">
+<h1 class="sr">Vulto Ink, tatuagem autoral em São Paulo</h1>
+<nav><b>Vulto<em>.</em>Ink</b><div><a href="#port" class="scr">Trabalhos</a><a href="#proc" class="scr">Processo</a><a href="#ag" class="scr">Agendar</a></div></nav>
+<section class="hero" id="hero"><canvas id="gl"></canvas>
+<div class="hint">Clique para derramar tinta</div>
+<div class="hw"><h2 class="ht" id="ht">Tinta que fica.</h2></div>
+<div class="hs"><p>Rafael Moraes. Blackwork, fine line e realismo em preto e cinza. Estúdio particular em São Paulo, uma pessoa por vez.</p><a class="mb mag" href="#ag">Agendar sessão <i class="ti ti-arrow-right" aria-hidden="true"></i></a></div>
+</section>
+<div class="mq"><div id="mq"></div></div>
+<section class="sec"><div class="two">
+<div><span class="lbl rv scr">01 / Sobre</span><h2 class="big rv">Cada traço é <i>permanente</i>. Nenhum é por acaso.</h2><p class="rv">Onze anos transformando ideias em pele, em estúdio privado e sem pressa. Cada peça é desenhada do zero para o seu corpo, pensando no movimento e em como a tinta vai envelhecer.</p>
+<div class="stats rv"><div><b data-n="11">0</b><small>Anos</small></div><div><b data-n="2400">0</b><small>Tatuagens</small></div><div><b data-n="100">0</b><small>% autorais</small></div></div></div>
+<canvas id="g2"></canvas>
+</div></section>
+<section class="sec"><span class="lbl rv scr">02 / Estilos</span><h2 class="big rv">Passe o mouse e <i>vire a carta</i>.</h2>
+<div class="sty">
+<div class="fl rv"><div class="fi"><div class="fa"><svg viewBox="0 0 60 60"><rect x="10" y="10" width="40" height="40" fill="#e9e6df"/><circle cx="30" cy="30" r="12" fill="#0a0a0a"/><path d="M10 30h40M30 10v40" stroke="#0a0a0a"/></svg><div><small>Estilo i</small><h3>Blackwork</h3></div></div><div class="fb2"><small>Blackwork</small><b>Preto sólido e geometria</b><p>Sessões de 3 a 6 horas. Ideal para cobrir, fechar e marcar presença.</p></div></div></div>
+<div class="fl rv"><div class="fi"><div class="fa"><svg viewBox="0 0 60 60" fill="none" stroke="#e9e6df" stroke-width=".7"><path d="M30 52C30 36 20 30 14 18M30 52c0-16 10-22 16-34M30 52V8"/><circle cx="30" cy="8" r="2"/><circle cx="14" cy="18" r="2"/><circle cx="46" cy="18" r="2"/></svg><div><small>Estilo ii</small><h3>Fine line</h3></div></div><div class="fb2"><small>Fine line</small><b>Agulha única, traço fino</b><p>Peças delicadas de 1 a 3 horas. Perfeito para a primeira tatuagem.</p></div></div></div>
+<div class="fl rv"><div class="fi"><div class="fa"><svg viewBox="0 0 60 60"><defs><radialGradient id="rg"><stop offset="0" stop-color="#e9e6df"/><stop offset="1" stop-color="#0a0a0a"/></radialGradient></defs><circle cx="30" cy="30" r="22" fill="url(#rg)"/></svg><div><small>Estilo iii</small><h3>Realismo</h3></div></div><div class="fb2"><small>Realismo</small><b>Luz, volume e textura</b><p>Retratos e esculturas em preto e cinza, em uma ou mais sessões.</p></div></div></div>
+</div></section>
+<section class="sec" id="port"><span class="lbl rv scr">03 / Portfólio</span><h2 class="big rv">Trabalhos <i>em órbita</i></h2>
+<div class="flt" id="flt"><button class="act" data-f="all">Todos</button><button data-f="blackwork">Blackwork</button><button data-f="fineline">Fine line</button><button data-f="realismo">Realismo</button></div>
+<div class="stage" id="stage"><div class="flr"></div><div class="ring" id="ring"></div><div class="sh">Arraste para girar. Clique para abrir</div></div>
+<div class="lb" id="lb"><button class="x" id="lbx" aria-label="Fechar"><i class="ti ti-x"></i></button><div class="art" id="lba"></div><div><span class="lbl" id="lbs"></span><h3 id="lbt"></h3><p id="lbd" style="max-width:260px"></p></div></div>
+</section>
+<section class="sec" id="proc"><div class="two">
+<div><span class="lbl rv scr">04 / Processo</span><h2 class="big rv">Do primeiro rabisco à <i>cicatrização</i>.</h2><div class="dn rv"><button class="mb mag" id="nx" style="padding:12px 20px">Próxima etapa <i class="ti ti-arrow-down" aria-hidden="true"></i></button><span id="dnum">01 / 04</span></div></div>
+<div class="deck" id="deck">
+<div class="dc"><h3><small>01</small>Consulta</h3><p>Conversa sobre ideia, referências, local e tamanho.</p></div>
+<div class="dc"><h3><small>02</small>Arte</h3><p>Desenho exclusivo, ajustado até ficar exatamente seu.</p></div>
+<div class="dc"><h3><small>03</small>Sessão</h3><p>Ambiente privado, material descartável e tempo sem pressa.</p></div>
+<div class="dc"><h3><small>04</small>Cuidados</h3><p>Guia de cicatrização e retoque incluso em até 60 dias.</p></div>
+</div></div></section>
+<section class="sec"><span class="lbl rv scr">05 / Depoimentos</span>
+<div class="dep">
+<div class="q on"><blockquote>Fui com uma ideia vaga e saí com a peça mais bonita que já vi. Ele escuta antes de desenhar.</blockquote><cite>Marina S. / fechamento de braço</cite></div>
+<div class="q"><blockquote>O fine line continua nítido dois anos depois. Isso diz tudo sobre a técnica.</blockquote><cite>Lucas T. / botânico no antebraço</cite></div>
+<div class="q"><blockquote>Ambiente calmo, zero pressa e um realismo que parece fotografia na pele.</blockquote><cite>Beatriz A. / retrato em preto e cinza</cite></div>
+</div></section>
+<section class="sec" id="ag"><span class="lbl rv scr">06 / Agendamento</span><h2 class="big rv">Vamos desenhar <i>a sua</i>?</h2>
+<form id="fm" novalidate>
+<div class="f"><input id="fn" placeholder=" " autocomplete="name"><label>Seu nome</label><div class="err"></div></div>
+<div class="f"><input id="fw" placeholder=" " inputmode="tel" autocomplete="tel"><label>WhatsApp</label><div class="err"></div></div>
+<div class="f w"><textarea id="fi" placeholder=" "></textarea><label>Conte a ideia da tatuagem</label><div class="err"></div></div>
+<div class="f fx"><select id="fl"><option value="">Escolha</option><option>Braço</option><option>Antebraço</option><option>Costas</option><option>Perna</option><option>Costela</option><option>Outro</option></select><label>Local do corpo</label><div class="err"></div></div>
+<div class="f fx"><select id="fz"><option value="">Escolha</option><option>Pequena (até 8 cm)</option><option>Média (8 a 15 cm)</option><option>Grande (15 cm ou mais)</option><option>Fechamento</option></select><label>Tamanho aproximado</label><div class="err"></div></div>
+<div class="f w"><label class="up" for="ff"><i class="ti ti-upload" aria-hidden="true"></i> <span id="ffn">Envie uma referência (opcional)</span></label><input type="file" id="ff" accept="image/*" style="display:none"></div>
+<div class="f w" style="display:flex;gap:14px;flex-wrap:wrap"><button type="submit" class="mb mag">Enviar pedido <i class="ti ti-send" aria-hidden="true"></i></button><a class="mb mag" style="border-color:#2e2e2e" href="https://wa.me/5511900000000" target="_blank" rel="noopener"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp</a></div>
+</form></section>
+<section class="sec"><span class="lbl rv scr">07 / Dúvidas</span>
+<details><summary>Dói muito?</summary><p>Depende da região e da sua sensibilidade. Costela e pés costumam incomodar mais; antebraço e coxa, menos. Fazemos pausas sempre que precisar.</p></details>
+<details><summary>Quanto custa?</summary><p>O valor depende de tamanho, complexidade e tempo de sessão. O orçamento vem após a consulta, sem compromisso.</p></details>
+<details><summary>Como cuidar depois?</summary><p>Você recebe um guia completo: higiene, hidratação, proteção solar e o que evitar nas primeiras semanas.</p></details>
+<details><summary>Qual a idade mínima?</summary><p>Apenas maiores de 18 anos, com documento com foto no dia da sessão.</p></details>
+</section>
+<footer><div class="fbg" id="fbg">Vulto.Ink</div><div class="fr"><span>São Paulo, SP / sob agendamento</span><span><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/5511900000000" target="_blank" rel="noopener">WhatsApp</a></span></div></footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const R=document.getElementById('vk'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches,MOB=matchMedia('(max-width:760px)').matches;
+const hero=document.getElementById('hero');
+
+/* Título: letras com entrada 3D */
+const ht=document.getElementById('ht');let h='',d=0;
+['Tinta','que fica.'].forEach((w,i)=>{if(i)h+='<br>';[...w].forEach(c=>{h+=c===' '?' ':`<span class="ch" style="animation-delay:${.4+d*.07}s">${c}</span>`;d++})});
+ht.innerHTML=h.replace(/(<br>)([\s\S]*)/,'$1<i>$2</i>');
+
+/* Rodapé: letras individuais */
+const fbg=document.getElementById('fbg');
+fbg.innerHTML=[...fbg.textContent].map(c=>`<span${c==='.'?' style="color:var(--a)"':''}>${c}</span>`).join('');
+const fch=[...fbg.children];
+
+/* Marquee */
+const mq=document.getElementById('mq');
+mq.innerHTML=['Blackwork','Fine line','Realismo','Feito à mão','Autoral','São Paulo'].map(t=>t+'<em>✦</em>').join('').repeat(4);
+
+/* Texto embaralhado */
+const CH='!<>-_/[]{}=+*^?#░▒▓';
+function scr(el){if(el._s)return;el._s=1;const o=el.dataset.o||(el.dataset.o=el.textContent);let f=0;
+const id=setInterval(()=>{el.textContent=[...o].map((c,i)=>i<f/2||c===' '?c:CH[Math.random()*CH.length|0]).join('');if(++f/2>o.length){clearInterval(id);el.textContent=o;el._s=0}},28)}
+R.querySelectorAll('.scr').forEach(el=>el.addEventListener('mouseenter',()=>scr(el)));
+
+/* Revelação no scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');if(e.target.classList.contains('scr'))scr(e.target);io.unobserve(e.target)}}),{threshold:.15});
+R.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* Contadores */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);
+e.target.querySelectorAll('[data-n]').forEach(el=>{const n=+el.dataset.n,t0=performance.now();(function c(t){const p=Math.min(1,(t-t0)/2200),k=1-Math.pow(1-p,4);el.textContent=Math.round(n*k).toLocaleString('pt-BR');if(p<1)requestAnimationFrame(c)})(t0)})}),{threshold:.4});
+cio.observe(R.querySelector('.stats'));
+
+/* Cursor e rastro */
+const cur=document.getElementById('cur'),TN=MOB?0:12,trs=[];
+for(let i=0;i<TN;i++){const t=document.createElement('div');t.className='tr';const s=7-i*.45;t.style.width=t.style.height=s+'px';t.style.opacity=1-i/TN;document.body.appendChild(t);trs.push({el:t,x:0,y:0})}
+let cX=innerWidth/2,cY=innerHeight/2,kx=cX,ky=cY,pX=cX,pY=cY,vel=0,mx=0,my=0,nx=0,ny=0;
+addEventListener('mousemove',e=>{cX=e.clientX;cY=e.clientY});
+R.addEventListener('mouseover',e=>{const c=e.target.closest('.card');cur.classList.toggle('big2',!!e.target.closest('.card,.mb,a,button,summary,.fl'));cur.textContent=c?'VER':''});
+
+/* Botões magnéticos */
+R.querySelectorAll('.mag').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;b.style.setProperty('--x',x+'px');b.style.setProperty('--y',y+'px');b.style.transform=`translate(${(x-r.width/2)*.3}px,${(y-r.height/2)*.4}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
+
+/* Arte procedural do portfólio */
+function art(type,s){let r=n=>{s=(s*9301+49297)%233280;return s/233280*n};const W=300,H=400,cx=150,cy=200;let g='';
+if(type==='blackwork'){const k=6+Math.floor(r(6));for(let i=0;i<k;i++)g+=`<path transform="rotate(${360/k*i} ${cx} ${cy})" d="M${cx} ${cy}Q${cx+40} ${cy-70} ${cx} ${cy-120+r(20)}Q${cx-40} ${cy-70} ${cx} ${cy}" fill="#e9e6df"/>`;
+for(let j=0;j<3;j++)g+=`<circle cx="${cx}" cy="${cy}" r="${30+j*16+r(6)}" fill="none" stroke="${j%2?'#0a0a0a':'#e9e6df'}" stroke-width="${j===1?8:1.5}"/>`;
+g+=`<circle cx="${cx}" cy="${cy}" r="18" fill="#0a0a0a"/><rect x="40" y="340" width="220" height="14" fill="#e9e6df"/>`;for(let i=0;i<22;i++)g+=`<rect x="${40+i*10}" y="358" width="5" height="5" fill="#e9e6df"/>`}
+else if(type==='fineline'){const n=5+Math.floor(r(4));g+=`<path d="M${cx} 360C${cx-10} 280 ${cx+12} 200 ${cx} 70" stroke="#e9e6df" stroke-width=".8" fill="none"/>`;
+for(let i=0;i<n;i++){const y=320-i*48,sd=i%2?1:-1,l=40+r(30);g+=`<path d="M${cx} ${y}q${sd*l*.6} -${l*.5} ${sd*l} -${l*.4}q-${sd*l*.3} ${l*.5} -${sd*l} ${l*.4}z" stroke="#e9e6df" stroke-width=".7" fill="none"/>`}
+g+=`<circle cx="${cx}" cy="64" r="9" fill="none" stroke="#b3121f" stroke-width=".8"/>`;for(let i=0;i<14;i++)g+=`<circle cx="${30+r(240)}" cy="${30+r(340)}" r=".9" fill="#e9e6df"/>`}
+else{for(let i=0;i<7;i++)g+=`<circle cx="${cx+r(10)-5}" cy="${cy-10+i*3}" r="${120-i*16}" fill="rgb(${20+i*24},${20+i*24},${20+i*23})"/>`;
+g+=`<ellipse cx="${cx-30}" cy="${cy-40}" rx="26" ry="16" fill="#0a0a0a"/><ellipse cx="${cx+30}" cy="${cy-40}" rx="26" ry="16" fill="#0a0a0a"/><path d="M${cx} ${cy-20}l-14 50h28z" fill="#1a1a1a"/><path d="M${cx-34} ${cy+50}q34 ${18+r(10)} 68 0" stroke="#0a0a0a" stroke-width="5" fill="none"/>`}
+return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice"><rect width="${W}" height="${H}" fill="#101010"/>${g}</svg>`}
+
+/* Carrossel 3D */
+const T=[['blackwork','Mandala solar','costas'],['fineline','Ramo de oliveira','antebraço'],['realismo','Olhar','braço'],['blackwork','Geometria sagrada','perna'],['fineline','Constelação','costela'],['realismo','Retrato em grafite','ombro'],['blackwork','Ornamento','antebraço'],['fineline','Linha contínua','pulso'],['realismo','Estátua clássica','braço']];
+const ring=document.getElementById('ring'),stage=document.getElementById('stage'),N=T.length,STEP=360/N,RAD=MOB?210:320,cards=[];
+T.forEach((t,i)=>{const c=document.createElement('div');c.className='card';c.dataset.k=t[0];
+c.innerHTML=art(t[0],i*37+11)+`<div class="cap"><span>${t[1]}</span><span>${String(i+1).padStart(2,'0')}</span></div>`;
+c.style.transform=`rotateY(${i*STEP}deg) translateZ(${RAD}px)`;ring.appendChild(c);cards.push(c);c.addEventListener('click',()=>{if(moved<6)openLB(i,c)})});
+let ang=0,av=.12,drag=false,sx=0,moved=0,seek=null;
+stage.addEventListener('pointerdown',e=>{drag=true;sx=e.clientX;moved=0;seek=null});
+addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-sx;sx=e.clientX;av=dx*.35;ang+=av;moved+=Math.abs(dx)});
+addEventListener('pointerup',()=>drag=false);
+
+/* Lightbox */
+const lbEl=document.getElementById('lb'),lba=document.getElementById('lba');
+function openLB(i,c){const t=T[i];lba.innerHTML=art(t[0],i*37+11);document.getElementById('lbs').textContent=t[0]==='fineline'?'Fine line':t[0];document.getElementById('lbt').textContent=t[1];document.getElementById('lbd').textContent='Peça autoral desenhada para o '+t[2]+'. Sessão única, cicatrização acompanhada.';
+const r=c.getBoundingClientRect(),pr=lbEl.parentElement.getBoundingClientRect(),px=r.left-pr.left+r.width/2,py=r.top-pr.top+r.height/2;
+lbEl.style.transition='none';lbEl.style.clipPath=`circle(0% at ${px}px ${py}px)`;lbEl.offsetHeight;lbEl.style.transition='';lbEl.style.clipPath=`circle(150% at ${px}px ${py}px)`;lbEl.classList.add('on')}
+lbEl.addEventListener('mousemove',e=>{const r=lba.getBoundingClientRect();lba.style.transform=`rotateY(${(e.clientX-r.left-r.width/2)/r.width*30}deg) rotateX(${-(e.clientY-r.top-r.height/2)/r.height*30}deg)`});
+const closeLB=()=>{lbEl.style.clipPath='circle(0% at 50% 50%)';lbEl.classList.remove('on')};
+document.getElementById('lbx').onclick=closeLB;addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+
+/* Filtros */
+document.getElementById('flt').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+R.querySelectorAll('#flt button').forEach(x=>x.classList.toggle('act',x===b));let first=-1;
+cards.forEach((c,i)=>{const on=b.dataset.f==='all'||c.dataset.k===b.dataset.f;c.classList.toggle('hide',!on);if(on&&first<0)first=i});
+const tg=-first*STEP;seek=ang+(((tg-ang)%360+540)%360-180);av=0};
+
+/* Baralho 3D do processo */
+const dcs=[...document.querySelectorAll('.dc')];let ord=[0,1,2,3];
+function lay(){ord.forEach((ci,k)=>{const c=dcs[ci];c.style.zIndex=10-k;c.style.opacity=1-k*.22;c.style.transform=`translate3d(0,${-k*22}px,${-k*80}px) rotateX(${k*6}deg)`;c.classList.toggle('f',k===0)});document.getElementById('dnum').textContent='0'+(ord[0]+1)+' / 04'}lay();
+function nextCard(){const f=dcs[ord[0]];f.style.transform='translate3d(0,160px,120px) rotateX(-70deg)';f.style.opacity=0;setTimeout(()=>{ord.push(ord.shift());lay()},450)}
+document.getElementById('nx').onclick=nextCard;document.getElementById('deck').onclick=nextCard;setInterval(nextCard,4200);
+
+/* Depoimentos */
+const qs=[...document.querySelectorAll('.q')];let qi=0;
+setInterval(()=>{qi=(qi+1)%qs.length;qs.forEach((q,j)=>q.classList.toggle('on',j===qi))},5000);
+
+/* Formulário */
+document.getElementById('ff').onchange=e=>{document.getElementById('ffn').textContent=e.target.files[0]?e.target.files[0].name:'Envie uma referência (opcional)'};
+const fm=document.getElementById('fm'),er=(id,m)=>{document.getElementById(id).parentElement.querySelector('.err').textContent=m};
+fm.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',()=>{const e=el.parentElement.querySelector('.err');if(e)e.textContent=''}));
+fm.onsubmit=e=>{e.preventDefault();let ok=true;const v=id=>document.getElementById(id).value.trim();
+if(!v('fn')){er('fn','Informe seu nome');ok=false}
+if(v('fw').replace(/\D/g,'').length<10){er('fw','Informe um WhatsApp com DDD');ok=false}
+if(v('fi').length<10){er('fi','Descreva a ideia em pelo menos uma frase');ok=false}
+if(!v('fl')){er('fl','Escolha o local');ok=false}
+if(!v('fz')){er('fz','Escolha o tamanho');ok=false}
+if(ok)fm.innerHTML='<div class="ok">Pedido recebido, '+v('fn').split(' ')[0].replace(/[<>&]/g,'')+'. Rafael responde pelo WhatsApp em até 48 horas.</div>'};
+
+/* Loop principal da interface */
+let mqx=0,tx=0,ty=0,lastSY=scrollY,sv=0;const hw=document.querySelector('.ht');
+function loop(){
+const rr=R.getBoundingClientRect(),hr=hero.getBoundingClientRect();
+mx=cX-rr.left;my=cY-rr.top;nx=(cX-hr.left)/hr.width*2-1;ny=(cY-hr.top)/hr.height*2-1;
+vel+=(Math.min(60,Math.hypot(cX-pX,cY-pY))-vel)*.1;pX=cX;pY=cY;
+const ds=scrollY-lastSY;lastSY=scrollY;sv+=(ds-sv)*.1;
+kx+=(cX-kx)*.18;ky+=(cY-ky)*.18;cur.style.transform=`translate(${kx}px,${ky}px) translate(-50%,-50%)`;
+let px=cX,py=cY;trs.forEach(t=>{t.x+=(px-t.x)*.35;t.y+=(py-t.y)*.35;t.el.style.transform=`translate(${t.x}px,${t.y}px) translate(-50%,-50%)`;px=t.x;py=t.y});
+tx+=(Math.max(-1,Math.min(1,nx))-tx)*.06;ty+=(Math.max(-1,Math.min(1,ny))-ty)*.06;
+if(!RM){
+const sp=1+vel*.15+Math.abs(sv)*.6,dir=sv<-.5?-1:1;mqx-=sp*dir;const w=mq.scrollWidth/4;if(mqx<-w)mqx+=w;if(mqx>0)mqx-=w;
+mq.style.transform=`translateX(${mqx}px) rotateX(${Math.max(-25,Math.min(25,vel*.6+sv*1.2))}deg)`;
+hw.style.transform=`rotateY(${tx*10}deg) rotateX(${-ty*8}deg)`;
+if(seek!==null){ang+=(seek-ang)*.08;if(Math.abs(seek-ang)<.05)seek=null}else if(!drag){ang+=av+sv*.05;av+=(.12-av)*.02}
+const sr=stage.getBoundingClientRect(),sy=(cY-sr.top)/sr.height-.5;
+ring.style.transform=`translateZ(${-RAD}px) rotateX(${-8+Math.max(-1,Math.min(1,sy))*-10}deg) rotateY(${ang}deg)`;
+cards.forEach((c,i)=>{const a=((i*STEP+ang)%360+360)%360*Math.PI/180,f=Math.cos(a);c.style.filter=`brightness(${.25+.75*Math.max(0,f)})`});
+fch.forEach(s=>{const r=s.getBoundingClientRect(),dx=(r.left+r.width/2)-cX,dy=(r.top+r.height/2)-cY,dd=Math.hypot(dx,dy),k=Math.max(0,1-dd/260);
+s.style.transform=`translateZ(${k*60}px) rotateY(${k*dx*.25}deg) rotateX(${-k*dy*.25}deg)`;s.style.color=k>.4&&s.textContent!=='.'?'#b3121f':''})}
+requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+
+/* ================= WebGL ================= */
+if(typeof THREE==='undefined')return;
+const PR=Math.min(devicePixelRatio,MOB?1:1.5);
+let heroVis=true,g2Vis=false,inH=false,run=!document.hidden;
+document.addEventListener('visibilitychange',()=>run=!document.hidden);
+hero.addEventListener('mouseenter',()=>inH=true);hero.addEventListener('mouseleave',()=>inH=false);
+
+/* Cena do hero */
+const cv=document.getElementById('gl'),rd=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+rd.setPixelRatio(PR);rd.setClearColor(0x0a0a0a,1);
+const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,100);cam.position.z=5.2;
+const U={t:{value:0},m:{value:new THREE.Vector2()},s:{value:0},p:{value:0},mw:{value:new THREE.Vector3()}};
+
+const blob=new THREE.Mesh(new THREE.IcosahedronGeometry(1.15,MOB?48:110),new THREE.ShaderMaterial({uniforms:U,
+vertexShader:`uniform float t,s,p;uniform vec2 m;varying vec3 vN,vP;varying float vD;
+float n(vec3 q){return sin(q.x*1.7+t*.7)*sin(q.y*2.1+t*.9)*sin(q.z*1.9+t*.6)+.5*sin(q.x*4.3-t)*sin(q.y*3.7+t*1.2)*sin(q.z*4.1+t*.8)+.25*sin(q.x*8.+t*1.5)*sin(q.y*7.+t)*sin(q.z*9.-t*.5);}
+void main(){vec3 q=position;float d=n(q*1.2+vec3(m*.6,0.))*(.2+s*.25+p*.5);
+d+=smoothstep(.6,1.,dot(normalize(q),normalize(vec3(m,1.))))*s*.4;d+=sin(length(q)*10.-t*8.)*p*.15;vD=d;
+vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(q+normal*d,1.);vP=-mv.xyz;gl_Position=projectionMatrix*mv;}`,
+fragmentShader:`varying vec3 vN,vP;varying float vD;uniform float t,p;
+void main(){vec3 N=normalize(vN+vec3(sin(vD*14.+t)*.3,cos(vD*12.)*.3,0.));vec3 V=normalize(vP);
+float fr=pow(1.-max(dot(N,V),0.),2.4);
+float sp=pow(max(dot(reflect(-normalize(vec3(.6,.8,.7)),N),V),0.),40.);
+float sp2=pow(max(dot(reflect(-normalize(vec3(-.8,-.3,.4)),N),V),0.),18.);
+vec3 ir=.5+.5*cos(6.28*(vD*1.5+fr*.6+vec3(0.,.33,.67)));
+vec3 c=vec3(.015)+vec3(.72,.06,.12)*fr*1.4+vec3(.97,.94,.9)*sp+ir*sp2*.25+vec3(.75,.08,.12)*p*fr;
+gl_FragColor=vec4(c,1.);}`}));
+sc.add(blob);
+
+const rings=[];
+[[1.75,0xb3121f],[2.05,0xe9e6df],[2.4,0x5a5a56]].forEach((r,i)=>{const g=new THREE.Group();
+const m=new THREE.Mesh(new THREE.TorusGeometry(r[0],.005,6,220),new THREE.MeshBasicMaterial({color:r[1],transparent:true,opacity:.7}));g.add(m);
+const sat=new THREE.Mesh(new THREE.SphereGeometry(.045+i*.01,16,16),new THREE.MeshBasicMaterial({color:r[1]}));sat.position.x=r[0];g.add(sat);
+g.rotation.set(1.2+i*.35,i*.7,i*.4);sc.add(g);rings.push({g,m,sp:(i%2?-1:1)*(.25+i*.12)})});
+
+const cage=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(2.9,1)),new THREE.LineBasicMaterial({color:0x2a2a2a,transparent:true,opacity:.5}));sc.add(cage);
+
+const PN=MOB?300:1100,pg=new THREE.BufferGeometry(),pa=new Float32Array(PN*3),ps=new Float32Array(PN);
+for(let i=0;i<PN;i++){const r=1.8+Math.random()*4,a=Math.random()*6.28,b=Math.acos(Math.random()*2-1);
+pa[i*3]=r*Math.sin(b)*Math.cos(a)*1.4;pa[i*3+1]=r*Math.sin(b)*Math.sin(a)*.7;pa[i*3+2]=r*Math.cos(b)-1.2;ps[i]=Math.random()}
+pg.setAttribute('position',new THREE.BufferAttribute(pa,3));pg.setAttribute('sz',new THREE.BufferAttribute(ps,1));
+const pts=new THREE.Points(pg,new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:U,
+vertexShader:`attribute float sz;uniform float t,p;uniform vec3 mw;varying float vA;
+void main(){vec3 q=position;q.y+=sin(t*.4+sz*20.)*.15;vec4 w=modelMatrix*vec4(q,1.);
+vec2 d=w.xy-mw.xy;float l=length(d);w.xy+=normalize(d+1e-4)*smoothstep(1.3,0.,l)*.9;w.xyz*=1.+p*.25*sz;
+vec4 mv=viewMatrix*w;gl_PointSize=(1.4+sz*3.6)*(4./-mv.z);vA=.2+sz*.6+smoothstep(1.3,0.,l)*.5;gl_Position=projectionMatrix*mv;}`,
+fragmentShader:`varying float vA;void main(){float d=length(gl_PointCoord-.5);if(d>.5)discard;
+gl_FragColor=vec4(mix(vec3(.92,.9,.86),vec3(.8,.1,.15),step(.85,vA)),(1.-d*2.)*vA);}`}));
+sc.add(pts);
+
+/* Pós-processamento */
+const rt=new THREE.WebGLRenderTarget(4,4);
+const P={tD:{value:rt.texture},m:{value:new THREE.Vector2(.5,.5)},t:U.t,v:{value:0},asp:{value:1},rp:{value:new THREE.Vector3(.5,.5,-99)}};
+const pS=new THREE.Scene(),pC=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+pS.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({uniforms:P,
+vertexShader:`varying vec2 vU;void main(){vU=uv;gl_Position=vec4(position.xy,0.,1.);}`,
+fragmentShader:`uniform sampler2D tD;uniform vec2 m;uniform float t,v,asp;uniform vec3 rp;varying vec2 vU;
+void main(){vec2 uv=vU,a=vec2(asp,1.);
+float age=t-rp.z;vec2 dv=(uv-rp.xy)*a;float dd=length(dv);
+float w=sin(dd*36.-age*11.)*exp(-age*1.4)*(1.-smoothstep(age*.6-.2,age*.6+.04,dd))*.04*step(0.,age);
+uv+=normalize(dv+1e-5)/a*w;
+vec2 dm=(uv-m)*a;uv-=dm/a*smoothstep(.28,0.,length(dm))*.07;
+float ca=.0015+.008*v+length(vU-.5)*.006+abs(w)*.5;vec2 dir=normalize(uv-.5+1e-5);
+vec3 c=vec3(texture2D(tD,uv+dir*ca).r,texture2D(tD,uv).g,texture2D(tD,uv-dir*ca).b);
+c+=vec3(.75,.05,.1)*abs(w)*7.;
+c*=1.-smoothstep(.35,1.05,length((vU-.5)*vec2(asp*.75,1.)))*.75;
+c+=(fract(sin(dot(vU+fract(t),vec2(12.9898,78.233)))*43758.5453)-.5)*.045;
+c*=.97+.03*sin(vU.y*900.);
+gl_FragColor=vec4(c,1.);}`})));
+
+function rs(){const w=cv.clientWidth,h=cv.clientHeight;rd.setSize(w,h,false);rt.setSize(w*PR,h*PR);cam.aspect=w/h;cam.updateProjectionMatrix();P.asp.value=w/h;
+const x=w>760?1.4:0;[blob,cage,pts].forEach(o=>o.position.x=x);rings.forEach(r=>r.g.position.x=x);blob.position.y=w>760?.25:.5}
+rs();addEventListener('resize',rs);
+
+hero.addEventListener('click',e=>{if(e.target.closest('a,button'))return;const r=hero.getBoundingClientRect();
+P.rp.value.set((e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height,U.t.value);U.p.value=1});
+
+new IntersectionObserver(e=>heroVis=e[0].isIntersecting).observe(hero);
+
+const clk=new THREE.Clock(),hh=Math.tan(20*Math.PI/180)*5.2;
+(function a(){requestAnimationFrame(a);const dt=Math.min(clk.getDelta(),.05);if(!run)return;if(!RM)U.t.value+=dt;if(!heroVis)return;
+U.m.value.set(tx,-ty);U.s.value+=((inH?1:0)-U.s.value)*.04;U.p.value*=.96;U.mw.value.set(tx*hh*cam.aspect,-ty*hh,0);
+P.m.value.set((tx+1)/2,1-(ty+1)/2);P.v.value+=((inH?vel/40:0)-P.v.value)*.1;
+const so=Math.min(1,scrollY/innerHeight);
+blob.rotation.y+=dt*.15;blob.rotation.x=ty*.4+so*.8;cage.rotation.y-=dt*.04;cage.rotation.x=ty*.2+U.t.value*.02;pts.rotation.y+=dt*.03;
+rings.forEach(r=>{r.g.rotation.z+=dt*r.sp;r.m.material.opacity=.45+U.s.value*.45});
+cam.position.x+=(tx*.5-cam.position.x)*.05;cam.position.y+=(-ty*.35-cam.position.y)*.05;cam.position.z=5.2+so*2.5;
+cam.lookAt(blob.position.x*.4,0,0);
+rd.setRenderTarget(rt);rd.render(sc,cam);rd.setRenderTarget(null);rd.render(pS,pC)})();
+
+/* Cena de geometria sagrada (Sobre) */
+const c2=document.getElementById('g2'),r2=new THREE.WebGLRenderer({canvas:c2,antialias:true,alpha:true});r2.setPixelRatio(PR);
+const s2=new THREE.Scene(),k2=new THREE.PerspectiveCamera(35,1,.1,50);k2.position.z=6;const G=new THREE.Group();s2.add(G);
+const L=(geo,col,op)=>{const o=new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:op}));G.add(o);return o};
+const l1=L(new THREE.IcosahedronGeometry(1.6,1),0xe9e6df,.55),l2=L(new THREE.OctahedronGeometry(1.05),0xb3121f,.95),l3=L(new THREE.DodecahedronGeometry(2.1),0x3a3a38,.6),l4=L(new THREE.TetrahedronGeometry(.55),0xe9e6df,.9);
+G.add(new THREE.Points(new THREE.IcosahedronGeometry(1.6,1),new THREE.PointsMaterial({color:0xb3121f,size:.07})));
+const tor=new THREE.Mesh(new THREE.TorusGeometry(2.45,.004,6,200),new THREE.MeshBasicMaterial({color:0xb3121f}));tor.rotation.x=1.3;G.add(tor);
+new IntersectionObserver(e=>g2Vis=e[0].isIntersecting).observe(c2);
+let born=0,lastW=0;
+(function b(){requestAnimationFrame(b);if(!run||!g2Vis)return;const w=c2.clientWidth;if(!w)return;if(w!==lastW){r2.setSize(w,w,false);lastW=w}
+born=Math.min(1,born+.008);const e=1-Math.pow(1-born,3),t=U.t.value;G.scale.setScalar(e);
+const r=c2.getBoundingClientRect(),gx=(cX-r.left)/r.width*2-1,gy=(cY-r.top)/r.height*2-1;
+G.rotation.y=t*.2+Math.max(-1,Math.min(1,gx))*.8;G.rotation.x=-Math.max(-1,Math.min(1,gy))*.6+Math.sin(t*.3)*.2;
+l2.rotation.y=-t*.6;l2.rotation.z=t*.3;l4.rotation.x=t*1.1;l4.rotation.y=t*.8;l3.rotation.z=-t*.1;l1.scale.setScalar(1+Math.sin(t*1.5)*.03);
+r2.render(s2,k2)})();
+})();
+</script>
+</body>
+</html>
