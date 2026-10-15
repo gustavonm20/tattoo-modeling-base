@@ -94,7 +94,7 @@ export default function Portfolio() {
       : ScrollTrigger.create({
           trigger: section,
           pin: true,
-          start: () => (section.offsetHeight > innerHeight ? 'bottom bottom' : 'top top'),
+          start: () => (section.offsetHeight > innerHeight ? 'bottom bottom' : 'center center'),
           end: '+=120%',
           anticipatePin: 1,
           invalidateOnRefresh: true,

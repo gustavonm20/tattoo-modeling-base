@@ -29,7 +29,7 @@ export function proceduralArt(type: TattooStyle, seed: number): string {
     g += `<path d="M${cx} 360C${cx - 10} 280 ${cx + 12} 200 ${cx} 70" stroke="#e9e6df" stroke-width=".8" fill="none"/>`;
     for (let i = 0; i < n; i++) {
       const y = 320 - i * 48, sd = i % 2 ? 1 : -1, l = 40 + r(30);
-      g += `<path d="M${cx} ${y}q${sd * l * 0.6} -${l * 0.5} ${sd * l} -${l * 0.4}q-${sd * l * 0.3} ${l * 0.5} -${sd * l} ${l * 0.4}z" stroke="#e9e6df" stroke-width=".7" fill="none"/>`;
+      g += `<path d="M${cx} ${y}q${sd * l * 0.6} ${-l * 0.5} ${sd * l} ${-l * 0.4}q${-sd * l * 0.3} ${l * 0.5} ${-sd * l} ${l * 0.4}z" stroke="#e9e6df" stroke-width=".7" fill="none"/>`;
     }
     g += `<circle cx="${cx}" cy="64" r="9" fill="none" stroke="#b3121f" stroke-width=".8"/>`;
     for (let i = 0; i < 14; i++) g += `<circle cx="${30 + r(240)}" cy="${30 + r(340)}" r=".9" fill="#e9e6df"/>`;
