@@ -19,7 +19,7 @@ const jsonLd = {
   description: site.description,
   url: site.url,
   image: `${site.url}/opengraph-image`,
-  telephone: `+${contact.whatsapp}`,
+  ...(contact.whatsapp && { telephone: `+${contact.whatsapp}` }),
   address: {
     '@type': 'PostalAddress',
     addressLocality: site.city,

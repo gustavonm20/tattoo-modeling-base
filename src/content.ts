@@ -36,7 +36,7 @@ export const site = {
 
 export const contact = {
   /** Só números, com DDI e DDD */
-  whatsapp: '5511900000000',
+  whatsapp: '', // TODO: preencher, ex.: '5511999999999'
   instagram: 'https://instagram.com',
   location: 'São Paulo, SP / sob agendamento',
 };
