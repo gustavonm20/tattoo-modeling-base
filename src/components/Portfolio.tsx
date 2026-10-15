@@ -101,6 +101,10 @@ export default function Portfolio() {
           onUpdate: (self) => (st.scrollTarget = self.progress * 360),
         });
 
+    let sr = stage.getBoundingClientRect();
+    const stopRead = onFrame(() => {
+      if (visible) sr = stage.getBoundingClientRect();
+    }, true);
     const stop = onFrame(() => {
       if (!visible) return;
       st.scrollAng += (st.scrollTarget - st.scrollAng) * 0.1;
@@ -113,7 +117,7 @@ export default function Portfolio() {
         st.av += (0.12 - st.av) * 0.02;
       }
       const total = st.ang + st.scrollAng;
-      const sr = stage.getBoundingClientRect(), sy = (pointer.y - sr.top) / sr.height - 0.5;
+      const sy = (pointer.y - sr.top) / sr.height - 0.5;
       const tilt = rm ? -8 : -8 + clamp(sy) * -10;
       ring.style.transform = `translateZ(${-st.rad}px) rotateX(${tilt}deg) rotateY(${total}deg)`;
       cards.forEach((c, i) => {
@@ -123,6 +127,7 @@ export default function Portfolio() {
     });
 
     return () => {
+      stopRead();
       stop();
       pin?.kill(true);
       io.disconnect();
@@ -212,17 +217,17 @@ export default function Portfolio() {
               data-k={it.style}
               role="button"
               tabIndex={0}
-              aria-label={`${it.title}, ${styleLabels[it.style]}. Abrir detalhes`}
               style={{ transform: `rotateY(${i * STEP}deg) translateZ(320px)` }}
               onClick={(e) => s.current.moved < 6 && openLB(i, e.currentTarget)}
               onKeyDown={(e) => cardKey(e, i)}
               onFocus={(e) => e.currentTarget.matches(':focus-visible') && seekTo(i)}
             >
               <Art item={it} index={i} sizes="190px" />
-              <div className="cap" aria-hidden="true">
+              <div className="cap">
                 <span>{it.title}</span>
                 <span>{String(i + 1).padStart(2, '0')}</span>
               </div>
+              <span className="sr">, {styleLabels[it.style]}. Abrir detalhes</span>
             </div>
           ))}
         </div>

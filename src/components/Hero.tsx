@@ -5,7 +5,7 @@ import { hero } from '@/content';
 import { ScrollTrigger } from '@/lib/gsap';
 import { onFrame } from '@/lib/frame';
 import { clamp, ensurePointer, pointer } from '@/lib/pointer';
-import { detectQuality, hasWebGL, prefersReducedMotion, whenIdle } from '@/lib/device';
+import { afterLoadIdle, detectQuality, hasWebGL, prefersReducedMotion } from '@/lib/device';
 import type { HeroScene } from '@/scenes/hero';
 
 /** Título com entrada 3D letra a letra; a segunda linha fica em itálico vermelho. */
@@ -102,9 +102,13 @@ export default function Hero() {
       onRefresh: (s) => (scroll = s.progress),
     });
 
+    // leitura de layout numa fase própria, antes das escritas do quadro
+    let r = heroEl.getBoundingClientRect();
+    const stopRead = onFrame(() => {
+      if (visible) r = heroEl.getBoundingClientRect();
+    }, true);
     const stop = onFrame((dt) => {
       if (!visible) return;
-      const r = heroEl.getBoundingClientRect();
       tx += (clamp(((pointer.x - r.left) / r.width) * 2 - 1) - tx) * 0.06;
       ty += (clamp(((pointer.y - r.top) / r.height) * 2 - 1) - ty) * 0.06;
       if (!rm) title.style.transform = `rotateY(${tx * 10}deg) rotateX(${-ty * 8}deg)`;
@@ -114,7 +118,7 @@ export default function Hero() {
     let cancelIdle = () => {};
     if (!hasWebGL()) setFallback(true);
     else
-      cancelIdle = whenIdle(() => {
+      cancelIdle = afterLoadIdle(() => {
         import('@/scenes/hero')
           .then(({ HeroScene }) => {
             if (disposed) return;
@@ -126,6 +130,7 @@ export default function Hero() {
     return () => {
       disposed = true;
       cancelIdle();
+      stopRead();
       stop();
       st.kill();
       io.disconnect();

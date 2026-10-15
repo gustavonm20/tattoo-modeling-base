@@ -19,11 +19,14 @@ export default function Marquee() {
     let x = 0, visible = true;
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
     io.observe(wrap);
+    // largura de uma cópia, em cache (ler scrollWidth a cada quadro força layout)
+    let w = track.scrollWidth / COPIES;
+    const ro = new ResizeObserver(() => (w = track.scrollWidth / COPIES));
+    ro.observe(track);
     const stop = onFrame(() => {
       if (!visible) return;
       const sv = pointer.scrollVel, sp = 1 + pointer.vel * 0.15 + Math.abs(sv) * 0.6, dir = sv < -0.5 ? -1 : 1;
       x -= sp * dir;
-      const w = track.scrollWidth / COPIES;
       if (x < -w) x += w;
       if (x > 0) x -= w;
       const tilt = Math.max(-25, Math.min(25, pointer.vel * 0.6 + sv * 1.2));
@@ -32,6 +35,7 @@ export default function Marquee() {
     return () => {
       stop();
       io.disconnect();
+      ro.disconnect();
     };
   }, []);
 

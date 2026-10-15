@@ -82,17 +82,21 @@ export default function About() {
         })
         .catch(() => !disposed && setFallback(true));
     };
-    const near = new IntersectionObserver(([e]) => e.isIntersecting && load(), { rootMargin: '400px' });
+    const near = new IntersectionObserver(([e]) => e.isIntersecting && load(), { rootMargin: '150px' });
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
     near.observe(canvas);
     io.observe(canvas);
+    let r = canvas.getBoundingClientRect();
+    const stopRead = onFrame(() => {
+      if (visible) r = canvas.getBoundingClientRect();
+    }, true);
     const stop = onFrame((dt) => {
       if (!visible || !scene || document.hidden) return;
-      const r = canvas.getBoundingClientRect();
       scene.render(dt, clamp(((pointer.x - r.left) / r.width) * 2 - 1), clamp(((pointer.y - r.top) / r.height) * 2 - 1));
     });
     return () => {
       disposed = true;
+      stopRead();
       stop();
       near.disconnect();
       io.disconnect();

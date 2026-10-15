@@ -17,17 +17,29 @@ export default function Footer() {
     let visible = false;
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
     io.observe(word);
+    // centros das letras sem a transformação (o pai não se move), lidos antes das escritas
+    let centers: { x: number; y: number }[] = [];
+    const stopRead = onFrame(() => {
+      if (!visible) return;
+      const wr = word.getBoundingClientRect();
+      centers = chars.map((s) => ({
+        x: wr.left + s.offsetLeft + s.offsetWidth / 2,
+        y: wr.top + s.offsetTop + s.offsetHeight / 2,
+      }));
+    }, true);
     const stop = onFrame(() => {
       if (!visible) return;
-      for (const s of chars) {
-        const r = s.getBoundingClientRect();
-        const dx = r.left + r.width / 2 - pointer.x, dy = r.top + r.height / 2 - pointer.y;
+      chars.forEach((s, i) => {
+        const c = centers[i];
+        if (!c) return;
+        const dx = c.x - pointer.x, dy = c.y - pointer.y;
         const k = Math.max(0, 1 - Math.hypot(dx, dy) / 260);
         s.style.transform = `translateZ(${k * 60}px) rotateY(${k * dx * 0.25}deg) rotateX(${-k * dy * 0.25}deg)`;
         s.style.color = k > 0.4 && !s.classList.contains('dot') ? '#b3121f' : '';
-      }
+      });
     });
     return () => {
+      stopRead();
       stop();
       io.disconnect();
     };

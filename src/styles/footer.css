@@ -9,6 +9,7 @@
   line-height: 0.9;
   letter-spacing: -0.02em;
   perspective: 500px;
+  position: relative;
   white-space: nowrap;
 }
 

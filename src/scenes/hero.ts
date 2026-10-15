@@ -75,13 +75,13 @@ export class HeroScene {
 
     // Forma de tinta
     this.blob = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.15, low ? 48 : 110),
+      new THREE.IcosahedronGeometry(1.15, low ? 32 : 110),
       new THREE.ShaderMaterial({ uniforms: u, vertexShader: blobVert, fragmentShader: blobFrag }),
     );
     this.scene.add(this.blob);
 
     // Pó em que a forma se desfaz ao rolar
-    const DN = low ? 1200 : 4000;
+    const DN = low ? 700 : 4000;
     const dg = new THREE.BufferGeometry();
     const dp = new Float32Array(DN * 3), dr = new Float32Array(DN);
     for (let i = 0; i < DN; i++) {
