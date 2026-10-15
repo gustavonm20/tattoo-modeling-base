@@ -54,6 +54,12 @@
   width: 100%;
   height: 100%;
   display: block;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.hero-gl.on {
+  opacity: 1;
 }
 
 /* Fallback sem WebGL: a forma em SVG/CSS */

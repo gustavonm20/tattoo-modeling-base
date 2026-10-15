@@ -5,7 +5,7 @@ import { hero } from '@/content';
 import { ScrollTrigger } from '@/lib/gsap';
 import { onFrame } from '@/lib/frame';
 import { clamp, ensurePointer, pointer } from '@/lib/pointer';
-import { afterLoadIdle, detectQuality, hasWebGL, prefersReducedMotion } from '@/lib/device';
+import { detectQuality, hasWebGL, prefersReducedMotion } from '@/lib/device';
 import type { HeroScene } from '@/scenes/hero';
 
 /** Título com entrada 3D letra a letra; a segunda linha fica em itálico vermelho. */
@@ -68,7 +68,8 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const [fallback, setFallback] = useState(false);
+  // 'static': SVG até o primeiro gesto | 'gl': cena 3D pronta | 'fallback': sem WebGL
+  const [mode, setMode] = useState<'static' | 'gl' | 'fallback'>('static');
 
   useEffect(() => {
     ensurePointer();
@@ -115,21 +116,26 @@ export default function Hero() {
       if (scene && !document.hidden) scene.render(dt, { tx, ty, hover: inside, vel: pointer.vel, scroll });
     });
 
-    let cancelIdle = () => {};
-    if (!hasWebGL()) setFallback(true);
-    else
-      cancelIdle = afterLoadIdle(() => {
-        import('@/scenes/hero')
-          .then(({ HeroScene }) => {
-            if (disposed) return;
-            scene = new HeroScene(canvas, { quality: detectQuality(), reducedMotion: rm });
-          })
-          .catch(() => !disposed && setFallback(true));
-      });
+    // A cena 3D só carrega no primeiro gesto da pessoa: o primeiro paint fica
+    // leve e o hero mostra a versão em SVG até lá.
+    const GESTURES = ['pointermove', 'pointerdown', 'touchstart', 'wheel', 'keydown', 'scroll'] as const;
+    const removeGestures = () => GESTURES.forEach((ev) => removeEventListener(ev, start));
+    function start() {
+      removeGestures();
+      import('@/scenes/hero')
+        .then(({ HeroScene }) => {
+          if (disposed) return;
+          scene = new HeroScene(canvas, { quality: detectQuality(), reducedMotion: rm });
+          setMode('gl');
+        })
+        .catch(() => !disposed && setMode('fallback'));
+    }
+    if (!hasWebGL()) setMode('fallback');
+    else GESTURES.forEach((ev) => addEventListener(ev, start, { passive: true, once: true }));
 
     return () => {
       disposed = true;
-      cancelIdle();
+      removeGestures();
       stopRead();
       stop();
       st.kill();
@@ -145,9 +151,9 @@ export default function Hero() {
 
   return (
     <section className="hero" id="hero" ref={heroRef}>
-      <canvas ref={canvasRef} className="hero-gl" aria-hidden="true" hidden={fallback} />
-      {fallback && <HeroFallback />}
-      {!fallback && <div className="hint">{hero.hint}</div>}
+      <canvas ref={canvasRef} className={`hero-gl${mode === 'gl' ? ' on' : ''}`} aria-hidden="true" hidden={mode === 'fallback'} />
+      {mode !== 'gl' && <HeroFallback />}
+      {mode === 'gl' && <div className="hint">{hero.hint}</div>}
       <div className="hw">
         <h2 className="ht" ref={titleRef}>
           <Title />

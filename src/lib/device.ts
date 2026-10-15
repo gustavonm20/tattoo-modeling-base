@@ -40,24 +40,3 @@ export function detectQuality(): Quality {
   return 'high';
 }
 
-/** Executa quando o navegador estiver ocioso (para não competir com o primeiro paint). */
-export function whenIdle(cb: () => void, timeout = 1200) {
-  if ('requestIdleCallback' in window) {
-    const id = requestIdleCallback(cb, { timeout });
-    return () => cancelIdleCallback(id);
-  }
-  const id = setTimeout(cb, 200);
-  return () => clearTimeout(id);
-}
-
-/** Espera o `load` da página e depois um momento ocioso. */
-export function afterLoadIdle(cb: () => void, timeout = 2500) {
-  let cancel = () => {};
-  const go = () => (cancel = whenIdle(cb, timeout));
-  if (document.readyState === 'complete') go();
-  else addEventListener('load', go, { once: true });
-  return () => {
-    removeEventListener('load', go);
-    cancel();
-  };
-}

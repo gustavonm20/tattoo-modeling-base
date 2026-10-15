@@ -72,6 +72,7 @@ src/
 - **Portfólio:** a seção fica fixada enquanto o scroll dá uma volta no carrossel 3D.
 - **Processo:** a seção fica fixada e cada etapa de scroll avança uma carta do baralho.
 - **Transição de tinta:** as seções principais são reveladas por um clip-path circular.
+- **Carregamento leve:** o hero abre com a forma em SVG. A cena 3D só carrega no primeiro gesto (mouse, toque, scroll ou tecla) e aparece com um fade.
 - **Desempenho:** as cenas WebGL pausam fora da tela, o pixel ratio é limitado e os recursos são liberados (dispose) ao desmontar.
 - **Qualidade adaptativa:** em celular ou GPU fraca, a cena usa menos partículas, geometria mais leve e nenhum pós-processamento.
 - **Sem WebGL:** a forma e a geometria aparecem como SVG estático.
