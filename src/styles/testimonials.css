@@ -1,0 +1,46 @@
+.dep {
+  min-height: 170px;
+  position: relative;
+  margin-top: 24px;
+  perspective: 800px;
+  max-width: 900px;
+}
+
+.q {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: rotateX(60deg) translateY(30px);
+  transform-origin: 50% 100%;
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.q.on {
+  opacity: 1;
+  transform: none;
+}
+
+.q blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 40px);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--l);
+}
+
+.q cite {
+  display: block;
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--g);
+  font-style: normal;
+}
+
+@media (max-width: 760px) {
+  .dep {
+    min-height: 240px;
+  }
+}

@@ -1,0 +1,46 @@
+.vk footer {
+  padding: 80px 7vw 36px;
+  border-top: 1px solid #1f1f1f;
+}
+
+.fbg {
+  font-family: var(--serif);
+  font-size: clamp(70px, 15vw, 240px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  perspective: 500px;
+  white-space: nowrap;
+}
+
+.fbg span {
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.fbg .dot {
+  color: var(--a);
+}
+
+.fr {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--g);
+}
+
+.fr a {
+  color: var(--l);
+  text-decoration: none;
+  margin-left: 18px;
+}
+
+@media (max-width: 760px) {
+  .vk footer {
+    padding: 64px 22px 30px;
+  }
+}

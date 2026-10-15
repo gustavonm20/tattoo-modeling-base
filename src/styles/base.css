@@ -1,0 +1,230 @@
+:root {
+  --bg: #0a0a0a;
+  --g: #8a8a86;
+  --l: #e9e6df;
+  /* vermelho da marca: preenchimentos, linhas e efeitos */
+  --a: #b3121f;
+  /* vermelho para texto grande (contraste ≥ 3:1 no fundo) */
+  --ad: #c8202e;
+  /* vermelho para texto pequeno (contraste ≥ 4.5:1 no fundo) */
+  --at: #e04452;
+  --serif: var(--font-serif), 'Cormorant Garamond', serif;
+  --sans: var(--font-sans), Inter, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Lenis controla o scroll suave quando ativo */
+html.lenis,
+html.lenis body {
+  height: auto;
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.vk {
+  position: relative;
+  overflow-x: clip;
+  background: var(--bg);
+  color: var(--l);
+  font-family: var(--sans);
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+.vk *,
+.vk *::before,
+.vk *::after {
+  box-sizing: border-box;
+}
+
+/* Cursor customizado só com mouse de verdade */
+@media (hover: hover) and (pointer: fine) {
+  .vk,
+  .vk a,
+  .vk button,
+  .vk input,
+  .vk select,
+  .vk textarea,
+  .vk summary,
+  .vk label {
+    cursor: none;
+  }
+}
+
+.vk h2,
+.vk h3 {
+  color: var(--l);
+  font-family: var(--serif);
+  font-weight: 400;
+  margin: 0;
+}
+
+.vk p {
+  color: var(--g);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.vk :focus-visible {
+  outline: 1px solid var(--at);
+  outline-offset: 4px;
+}
+
+.sec {
+  padding: 110px 7vw;
+  position: relative;
+  border-top: 1px solid #1f1f1f;
+}
+
+.lbl {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--at);
+  margin-bottom: 14px;
+  display: block;
+  font-family: var(--mono);
+}
+
+.big {
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.05;
+}
+
+.big i {
+  color: var(--ad);
+}
+
+.two {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6vw;
+  align-items: center;
+}
+
+/* Revelação ao entrar na tela (classe .on vem do ScrollTrigger) */
+.rv {
+  opacity: 0;
+  transform: perspective(600px) rotateX(-35deg) translateY(40px);
+  transform-origin: 50% 0;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rv.on,
+.no-js .rv {
+  opacity: 1;
+  transform: none;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5%, 3%); }
+  50% { transform: translate(4%, -6%); }
+  75% { transform: translate(-7%, 2%); }
+}
+
+/* Botão com preenchimento de tinta que nasce do ponto do mouse */
+.mb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px;
+  border: 1px solid var(--l);
+  border-radius: 40px;
+  background: transparent;
+  color: var(--l);
+  font: 400 11px var(--sans);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.5s, border-color 0.5s;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.mb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--a);
+  clip-path: circle(0% at var(--x, 50%) var(--y, 100%));
+  transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.mb:hover::before,
+.mb:focus-visible::before {
+  clip-path: circle(150% at var(--x, 50%) var(--y, 100%));
+}
+
+.mb:hover {
+  border-color: var(--a);
+}
+
+.mb svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 760px) {
+  .sec {
+    padding: 72px 22px;
+  }
+
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .vk *,
+  .grain {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .rv {
+    opacity: 1;
+    transform: none;
+  }
+}

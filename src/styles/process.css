@@ -1,0 +1,79 @@
+.deck {
+  position: relative;
+  height: 300px;
+  perspective: 900px;
+  margin-top: 10px;
+}
+
+.dc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  height: 210px;
+  background: #101010;
+  border: 1px solid #262626;
+  padding: 30px;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s, background 0.6s;
+  transform-origin: 50% 100%;
+}
+
+.dc.f {
+  background: #131313;
+  border-color: #3a1a1d;
+}
+
+.vk .dc h3 {
+  font-size: 36px;
+}
+
+.dc h3 small {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--at);
+  letter-spacing: 0.2em;
+  margin-right: 12px;
+}
+
+.vk .dc p {
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+
+.dn {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.dn span {
+  font-size: 11px;
+  color: var(--g);
+  letter-spacing: 0.2em;
+  font-family: var(--mono);
+}
+
+.dn .mb {
+  padding: 12px 20px;
+}
+
+/* Barra de progresso das etapas durante o pin */
+.dbar {
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #2a2a2a;
+  position: relative;
+  overflow: hidden;
+}
+
+.dbar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--a);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--dp, 0.25));
+  transition: transform 0.4s;
+}

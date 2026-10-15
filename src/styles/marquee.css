@@ -1,0 +1,22 @@
+.mq {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 24px 0;
+  border-top: 1px solid #1f1f1f;
+  perspective: 400px;
+}
+
+.mq-track {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: clamp(48px, 6vw, 90px);
+  font-style: italic;
+  will-change: transform;
+}
+
+.mq em {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--a);
+  font-style: normal;
+  margin: 0 28px;
+}

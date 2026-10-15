@@ -1,0 +1,2 @@
+Coloque aqui as fotos reais do portfólio (WebP, proporção 3:4, ~900x1200).
+Depois importe no src/content.ts e use no campo `image` do trabalho.

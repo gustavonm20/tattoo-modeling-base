@@ -1,0 +1,44 @@
+.cur {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--l);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 62;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s, height 0.35s, background 0.35s;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 9px var(--sans);
+  letter-spacing: 0.15em;
+  color: #000;
+}
+
+.cur.big2 {
+  width: 84px;
+  height: 84px;
+  background: var(--l);
+}
+
+.tr {
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: var(--a);
+  pointer-events: none;
+  z-index: 61;
+  transform: translate(-50%, -50%);
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 760px) {
+  .cur,
+  .tr {
+    display: none;
+  }
+}

@@ -1,0 +1,143 @@
+.vk form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 28px;
+  margin-top: 36px;
+  max-width: 900px;
+}
+
+.f {
+  position: relative;
+}
+
+.f.w {
+  grid-column: 1 / -1;
+}
+
+.f input,
+.f select,
+.f textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #2e2e2e;
+  color: var(--l);
+  font: 300 15px var(--sans);
+  padding: 22px 0 8px;
+  outline: none;
+  border-radius: 0;
+  transition: border-color 0.4s;
+  appearance: none;
+}
+
+.f select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--g) 50%), linear-gradient(135deg, var(--g) 50%, transparent 50%);
+  background-position: calc(100% - 10px) 60%, calc(100% - 5px) 60%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.f select option {
+  background: #111;
+}
+
+.f textarea {
+  resize: none;
+  height: 84px;
+}
+
+.f > label {
+  position: absolute;
+  left: 0;
+  top: 22px;
+  font-size: 14px;
+  color: var(--g);
+  transition: all 0.35s;
+  pointer-events: none;
+}
+
+.f input:focus,
+.f textarea:focus,
+.f select:focus {
+  border-color: var(--a);
+}
+
+.f [aria-invalid='true'] {
+  border-color: #e2574c;
+}
+
+.f input:focus + label,
+.f input:not(:placeholder-shown) + label,
+.f textarea:focus + label,
+.f textarea:not(:placeholder-shown) + label,
+.f.fx > label {
+  top: 0;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--at);
+}
+
+.err {
+  font-size: 11px;
+  color: #e2574c;
+  margin-top: 5px;
+  min-height: 14px;
+}
+
+.up {
+  border: 1px dashed #2e2e2e;
+  padding: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--g);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.up:hover,
+.f.w:focus-within .up {
+  border-color: var(--a);
+}
+
+.up svg {
+  width: 16px;
+  height: 16px;
+}
+
+.f-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.f-actions .mb.alt {
+  border-color: #2e2e2e;
+}
+
+.ok {
+  grid-column: 1 / -1;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-style: italic;
+  margin-top: 36px;
+  max-width: 900px;
+}
+
+.ok a {
+  display: inline-block;
+  margin-top: 14px;
+  font: 400 12px var(--sans);
+  font-style: normal;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--at);
+}
+
+@media (max-width: 760px) {
+  .vk form {
+    grid-template-columns: 1fr;
+  }
+}

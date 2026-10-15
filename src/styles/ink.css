@@ -1,0 +1,50 @@
+/*
+ * Transição de tinta entre seções (ver lib/ink.ts).
+ * --ink vai de 0 a 1: a mancha vermelha se espalha do topo e o conteúdo
+ * aparece logo atrás dela, num clip-path circular.
+ * Sem JS, --ink fica em 1 e tudo aparece normalmente.
+ */
+.sec.ink {
+  --ink: 1;
+  padding: 0;
+}
+
+.ink-fill {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, #c8202e 0%, var(--a) 35%, #4a060c 70%);
+  clip-path: circle(calc(var(--ink) * 150%) at 50% 0%);
+  opacity: calc(1 - var(--ink));
+}
+
+.ink-c {
+  position: relative;
+  padding: 110px 7vw;
+  background: var(--bg);
+  clip-path: circle(calc(var(--ink) * 165% - 12%) at 50% 0%);
+}
+
+.ink-done .ink-fill {
+  display: none;
+}
+
+.ink-done .ink-c {
+  clip-path: none;
+}
+
+@media (max-width: 760px) {
+  .ink-c {
+    padding: 72px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-fill {
+    display: none;
+  }
+
+  .ink-c {
+    clip-path: none;
+  }
+}

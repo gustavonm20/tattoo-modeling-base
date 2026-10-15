@@ -1,0 +1,45 @@
+.g2-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.g2 {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.g2-fallback {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.stats div {
+  border-left: 1px solid var(--a);
+  padding-left: 12px;
+}
+
+.stats b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--l);
+  font-variant-numeric: tabular-nums;
+}
+
+.stats small {
+  font-size: 10px;
+  color: var(--g);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
